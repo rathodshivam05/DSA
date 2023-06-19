@@ -1,38 +1,42 @@
-// let arr=[1,1,2,3,45,8,7];
-// // let res=arr.map((e)=>e*2);
-// Array.prototype.myMap=function (cb){
-// let newArr=new Array();
-// for(let i=0;i<this.length;i++){
-//     newArr.push(cb(this[i], i, this));
-// }
-// return newArr;
-// }
-// let res=arr.myMap((e)=>e*2);
-// console.log(res);
+let arrmap = [1, 1, 2, 3, 45, 8, 7];
+// let res=arr.map((e)=>e*2); inbuilt map;
+//custom map fuinction
+Array.prototype.myMap = function (cb) {
+    let newArr = new Array();
+    for (let i = 0; i < this.length; i++) {
+        newArr.push(cb(this[i], i, this));
+    }
+    return newArr;
+}
+let resultMap = arrmap.myMap((e) => e * 2);
+console.log(resultMap);
 
 // custom higher order functin are the pollyfills
 
-let arr = [1, 1, 2, 3, 7];
+let arrfilter = [1, 1, 2, 3, 7];
 
-// let  res=arr.filter((e)=> e>2);
-// console.log(res);
+// let resultFilter = arrfilter.filter((e) => e > 2);
+// console.log(resultFilter); //inbuilt filter
 
-// Array.prototype.myFilter=function (cb){
-// let newArr=new Array();
-// for(let i=0;i<this.length;i++){
-//  if(cb(this[i], i, this)){
-//     newArr.push(this[i])
-//  }
-// }
-// return newArr;
-// }
-// let  res=arr.filter((e)=> e>2);
-// console.log(res);
+//custom filter 
+Array.prototype.myFilter = function (cb) {
+    let newArr = new Array();
+    for (let i = 0; i < this.length; i++) {
+        if (cb(this[i], i, this)) {
+            newArr.push(this[i])
+        }
+    }
+    return newArr;
+}
+let resultFilter = arrfilter.filter((e) => e > 2);
+console.log(resultFilter);
 
-// let res = arr.reduce((prev, next)=> {
-//  return prev+next;
-// },3)
-// console.log(res);
+// let resultReduce = arr.reduce((prev, next) => {
+//     return prev + next;
+// }, 3)
+// console.log(resultReduce); //inbuilt reduce
+
+// Custom Reduce function
 
 Array.prototype.myReduce = function (cb, initVal) {
     let accum = initVal;
